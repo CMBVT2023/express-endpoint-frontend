@@ -40,7 +40,7 @@ export default function usePostRequest({associatedKeyString, endpointString}: Us
     }
 
     function refetchData() {
-        clientQuery.invalidateQueries({queryKey: associatedKeyString})
+        clientQuery.invalidateQueries({queryKey: [associatedKeyString]})
     }
 
     return {error, mutateAsync, isSuccess}

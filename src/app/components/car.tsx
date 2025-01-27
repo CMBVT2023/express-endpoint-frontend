@@ -1,11 +1,12 @@
 import { CarObject } from "@/utils/typescript-types"
 import Link from "next/link"
+import DeleteButton from "./delete-button";
 
 export default function Car(props: CarObject) {
     const editCarQueryData = {...props};
 
     return (
-        <div className="grid grid-cols-4">
+        <div className="grid grid-cols-5">
             <h2>{props.make}</h2>
             <h2>{props.model}</h2>
             <h2>{props.year}</h2>
@@ -13,7 +14,7 @@ export default function Car(props: CarObject) {
                 pathname: "edit-car",
                 query: editCarQueryData
             }}>Edit</Link>
-            {/* <EditButton make={props.make} model={props.model} year={props.year} id={props.id} /> */}
+            <DeleteButton id={props.id}/>
         </div>
     )
 }

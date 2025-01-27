@@ -1,22 +1,15 @@
 "use client"
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { URLContext } from "./context-provider";
 
-type PutData = {
-    model: string;
-    make: string;
-    year: number;
-    id: number;
-}
-
-interface UsePutRequestProps {
+interface UseDeleteRequestProps {
     associatedKeyString: string;
     endpointString: string;
 }
 
-export default function usePutRequest({associatedKeyString, endpointString}: UsePutRequestProps) {
+export default function useDeleteRequest({associatedKeyString, endpointString}: UseDeleteRequestProps) {
     const baseURL = useContext(URLContext);
     const serverURL = `${baseURL}/${endpointString}`
     const clientQuery = useQueryClient()
@@ -26,22 +19,17 @@ export default function usePutRequest({associatedKeyString, endpointString}: Use
         onSuccess: refetchData
     })
 
-    async function makePostRequest(requestBody: PutData) {
-        const {make: newMake, model: newModel, year: newYear, id: dbID} = requestBody;
+    async function makePostRequest(id: number) {
+        const idURL = `${serverURL}/${id}`        
         const response = await axios({
-            method: "put",
-            url: serverURL,
-            data: {
-                newModel,
-                newMake,
-                newYear,
-                dbID
-            }
+            method: "delete",
+            url: idURL,
         })
         return response.data;
     }
 
     function refetchData() {
+        console.log('invalidated')
         clientQuery.invalidateQueries({queryKey: [associatedKeyString]})
     }
 

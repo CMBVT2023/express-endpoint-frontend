@@ -4,6 +4,7 @@ import "./globals.css";
 
 import ProjectQueryProvider from '@/utils/project-query-provider'
 import ContextProvider from "@/utils/context-provider";
+import Link from "next/link";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -26,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className="h-dvh">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -35,6 +36,11 @@ export default function RootLayout({
                 {children}
             </ProjectQueryProvider>
           </ContextProvider>
+
+          <footer>
+            <Link href={'/'}>Home</Link>
+            <Link href={'add-car'}>Add</Link>
+          </footer>
       </body>
     </html>
   );

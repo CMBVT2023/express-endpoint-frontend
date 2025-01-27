@@ -1,4 +1,3 @@
-import Image from "next/image";
 import CarsList from "./containers/cars-list";
 
 export default function Home() {

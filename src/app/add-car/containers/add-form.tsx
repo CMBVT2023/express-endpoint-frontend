@@ -3,11 +3,11 @@ import { FormEvent, useRef } from "react";
 import UserInput from "../components/UserInput";
 import usePostRequest from "@/utils/post-request";
 
-export default function CarForm() {
+export default function AddForm() {
     const makeRef = useRef<HTMLInputElement | null>(null)
     const modelRef = useRef<HTMLInputElement | null>(null)
     const yearRef = useRef<HTMLInputElement | null>(null)
-    const {data, error, mutateAsync: addNewCar, isSuccess} = usePostRequest({keyString: 'addCar', endpointString: 'car'})
+    const {data, error, mutateAsync: addNewCar, isSuccess} = usePostRequest({associatedKeyString: 'addCar', endpointString: 'car'})
 
     function quickCheck(e: FormEvent<HTMLFormElement>): void {
         e.preventDefault();

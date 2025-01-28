@@ -7,7 +7,7 @@ interface ContextProviderProps {
 
 export const URLContext = createContext<string | null>(null) 
 
-export default function ContextProvider({children}: ContextProviderProps) {
+export default function URLContextProvider({children}: ContextProviderProps) {
     return (
         <URLContext.Provider value="http://localhost:5000">
             {children}

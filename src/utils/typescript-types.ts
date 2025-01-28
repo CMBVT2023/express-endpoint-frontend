@@ -4,3 +4,9 @@ export type CarObject = {
     model: string;
     year: number;
     deleted_flag: null | number;
+}
+
+export type UserData = {
+    userName: string;
+    userKey: string;
+}

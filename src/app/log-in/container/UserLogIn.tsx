@@ -1,12 +1,17 @@
 "use client"
-import { FormEvent, useRef } from "react";
+import { FormEvent, useEffect, useRef } from "react";
 import UserInput from "../components/UserInput";
 import useLogIn from "@/queries/login-request";
+import { redirect } from "next/navigation";
 
 export default function UserLogIn() {
     const userNameRef = useRef<HTMLInputElement | null>(null)
     const userKeyRef = useRef<HTMLInputElement | null>(null)
     const {error, mutateAsync, isSuccess} = useLogIn();
+
+    useEffect(() => {
+        if (isSuccess) redirect('/');
+    }, [isSuccess])
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()

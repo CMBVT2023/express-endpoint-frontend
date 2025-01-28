@@ -2,7 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext } from "react";
-import { URLContext } from "@/utils/context-provider";
+import { URLContext } from "@/utils/url-context-provider";
 
 interface UseDeleteRequestProps {
     associatedKeyString: string;
@@ -15,7 +15,8 @@ export default function useDeleteRequest({associatedKeyString, endpointString}: 
     const clientQuery = useQueryClient()
 
     const {error, mutateAsync, isSuccess} = useMutation({
-        mutationFn: makePostRequest
+        mutationFn: makePostRequest,
+        onSuccess: refetchData
     })
 
     async function makePostRequest(id: number) {

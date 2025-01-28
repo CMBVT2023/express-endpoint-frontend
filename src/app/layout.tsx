@@ -3,8 +3,8 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 import ProjectQueryProvider from '@/utils/project-query-provider'
-import ContextProvider from "@/utils/context-provider";
 import Link from "next/link";
+import URLContextProvider from "@/utils/url-context-provider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,11 +31,11 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <ContextProvider>
+          <URLContextProvider>
             <ProjectQueryProvider>
                 {children}
             </ProjectQueryProvider>
-          </ContextProvider>
+          </URLContextProvider>
 
           <footer>
             <Link href={'/'}>Home</Link>

@@ -1,12 +1,15 @@
 "use client"
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
-import { URLContext } from "@/utils/context-provider";
+import { URLContext } from "@/utils/url-context-provider";
 import { useContext } from "react";
+import { UserData } from "@/utils/typescript-types";
+import storeUserLogin from "@/api/store-user-login";
+import { redirect } from "next/navigation"; 
 
-type UserData = {
-    userName: string;
-    userKey: string;
+type ResponseData = {
+    jwt: string;
+    success: boolean;
 }
 
 export default function useLogIn() {
@@ -14,7 +17,8 @@ export default function useLogIn() {
     const serverURL = `${baseURL}/log-in`;
 
     const {error, mutateAsync, isSuccess} = useMutation({
-        mutationFn: makePostRequest
+        mutationFn: makePostRequest,
+        onSuccess: saveUser
     })
 
     async function makePostRequest(requestBody: UserData) {
@@ -28,6 +32,12 @@ export default function useLogIn() {
             }
         })
         return response.data;
+    }
+
+    async function saveUser(responseData: ResponseData, userData: UserData) {
+        const isUserTokenStored = await storeUserLogin(userData);
+
+        if (isUserTokenStored) redirect('/')
     }
 
     return {error, mutateAsync, isSuccess}

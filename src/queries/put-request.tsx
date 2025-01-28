@@ -2,7 +2,7 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext, useState } from "react";
-import { URLContext } from "@/utils/context-provider";
+import { URLContext } from "@/utils/url-context-provider";
 
 type PutData = {
     model: string;

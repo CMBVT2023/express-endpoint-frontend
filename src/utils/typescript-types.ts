@@ -6,7 +6,7 @@ export type CarObject = {
     deleted_flag: null | number;
 }
 
-export type UserData = {
-    userName: string;
-    userKey: string;
+export type ResponseData = {
+    jwt: string;
+    success: boolean;
 }

@@ -1,13 +1,13 @@
 'use server'
 
-import { UserData } from "@/utils/typescript-types";
+import { ResponseData } from "@/utils/typescript-types";
 import { cookies } from "next/headers"
 
-export default async function storeUserLogin(userData: UserData) {
+export default async function storeUserLogin(data: ResponseData) {
     try {
         const storedCookies = await cookies();
     
-        storedCookies.set('user', JSON.stringify(userData))
+        storedCookies.set('user', `${data.jwt}`)
     
         return true
     } catch (error) {

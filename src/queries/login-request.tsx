@@ -7,9 +7,9 @@ import { UserData } from "@/utils/typescript-types";
 import storeUserLogin from "@/api/store-user-login";
 import { redirect } from "next/navigation"; 
 
-type ResponseData = {
-    jwt: string;
-    success: boolean;
+type UserData = {
+    userName: string;
+    userKey: string;
 }
 
 export default function useLogIn() {
@@ -34,8 +34,8 @@ export default function useLogIn() {
         return response.data;
     }
 
-    async function saveUser(responseData: ResponseData, userData: UserData) {
-        const isUserTokenStored = await storeUserLogin(userData);
+    async function saveUser(responseData: ResponseData) {
+        const isUserTokenStored = await storeUserLogin(responseData);
 
         if (isUserTokenStored) redirect('/')
     }

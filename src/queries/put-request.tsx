@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { URLContext } from "@/utils/url-context-provider";
+import getUserLogin from "@/api/get-user-login";
 
 type PutData = {
     model: string;
@@ -27,6 +28,7 @@ export default function usePutRequest({associatedKeyString, endpointString}: Use
     })
 
     async function makePostRequest(requestBody: PutData) {
+        const userLogin = await getUserLogin();
         const {make: newMake, model: newModel, year: newYear, id: dbID} = requestBody;
         const response = await axios({
             method: "put",
@@ -36,6 +38,9 @@ export default function usePutRequest({associatedKeyString, endpointString}: Use
                 newMake,
                 newYear,
                 dbID
+            },
+            headers: {
+                "authorization": userLogin
             }
         })
         return response.data;

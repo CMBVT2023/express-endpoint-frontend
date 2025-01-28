@@ -3,6 +3,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext } from "react";
 import { URLContext } from "@/utils/url-context-provider";
+import getUserLogin from "@/api/get-user-login";
 
 interface UseGetRequestProps {
     keyString: string;
@@ -18,10 +19,14 @@ export default function useGetRequest({keyString, endpointString}: UseGetRequest
     })
 
     async function makeGetRequest() {
+        const userLogin = await getUserLogin();
         const response = await axios({
             method: "get",
             url: serverURL,
-            responseType: 'json'
+            responseType: 'json',
+            headers: {
+                "authorization": userLogin
+            }
         })
         return response.data;
     }

@@ -3,6 +3,7 @@ import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext, useState } from "react";
 import { URLContext } from "@/utils/url-context-provider";
+import getUserLogin from "@/api/get-user-login";
 
 type PostData = {
     model: string;
@@ -26,6 +27,7 @@ export default function usePostRequest({associatedKeyString, endpointString}: Us
     })
 
     async function makePostRequest(requestBody: PostData) {
+        const userLogin = await getUserLogin();
         const {make, model, year} = requestBody;
         const response = await axios({
             method: "post",
@@ -34,6 +36,9 @@ export default function usePostRequest({associatedKeyString, endpointString}: Us
                 model,
                 make,
                 year
+            },
+            headers: {
+                "authorization": userLogin
             }
         })
         return response.data;

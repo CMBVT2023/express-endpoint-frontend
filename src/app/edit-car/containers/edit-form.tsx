@@ -31,7 +31,7 @@ export default function EditForm(props: Omit<CarObject, "deleted_flag">) {
     return (
         <>
             {error && <h2>{error.message}</h2>}
-            <form onSubmit={quickCheck} className="flex flex-col justify-center items-center">
+            <form onSubmit={quickCheck} className="flex flex-col justify-center items-center gap-4">
                 <UserInput labelName="Make" value={carMake} alter={setCarMake} />
                 <UserInput labelName="Model" value={carModel} alter={setCarModel} />
                 <UserInput labelName="Year" value={carYear} alter={setCarYear} />

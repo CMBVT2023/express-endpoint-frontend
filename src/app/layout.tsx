@@ -28,7 +28,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-dvh">
+    <html lang="en" className="h-full w-full">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
@@ -40,7 +40,9 @@ export default function RootLayout({
               </header>
               <URLContextProvider>
                 <ProjectQueryProvider>
-                    {children}
+                    <div className="h-dvh">
+                      {children}
+                    </div>
                 </ProjectQueryProvider>
               </URLContextProvider>
             </LoginCheck>

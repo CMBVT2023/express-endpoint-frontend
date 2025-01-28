@@ -10,6 +10,4 @@ export default async function getUserLogin() {
     } catch (error) {
         console.error(error)
     }
-
-
 }

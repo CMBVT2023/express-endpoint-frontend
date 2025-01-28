@@ -8,9 +8,9 @@ interface UserInputProps {
 
 export default function UserInput({labelName, inputRef, inputType}: UserInputProps) {
     return (
-        <>
-            <label htmlFor={`input-${labelName}`}>{labelName}</label>
+        <div className="flex gap-4">
+            <label htmlFor={`input-${labelName}`}>{labelName}:</label>
             <input ref={inputRef} id={`input-${labelName}`} placeholder="labelName" type={inputType} />
-        </>
+        </div>
     )
 }

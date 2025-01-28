@@ -1,9 +1,9 @@
 'use server'
 
-import { ResponseData } from "@/utils/typescript-types";
+import { UserSessionData } from "@/utils/typescript-types";
 import { cookies } from "next/headers"
 
-export default async function storeUserLogin(data: ResponseData) {
+export default async function storeUserLogin(data: UserSessionData) {
     try {
         const storedCookies = await cookies();
     

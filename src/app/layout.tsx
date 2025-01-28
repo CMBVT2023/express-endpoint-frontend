@@ -5,6 +5,7 @@ import "./globals.css";
 import ProjectQueryProvider from '@/utils/project-query-provider'
 import Link from "next/link";
 import URLContextProvider from "@/utils/url-context-provider";
+import LoginCheck from "@/utils/login-check";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -31,17 +32,18 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-          <header className="flex gap-4">
-            <Link href={'/'}>Home</Link>
-            <Link href={'add-car'}>Add</Link>
-            <Link href={'log-in'}>Login</Link>
-          </header>
-
-          <URLContextProvider>
-            <ProjectQueryProvider>
-                {children}
-            </ProjectQueryProvider>
-          </URLContextProvider>
+            <LoginCheck>
+              <header className="flex gap-4">
+                <Link href={'/'}>Home</Link>
+                <Link href={'add-car'}>Add</Link>
+                <Link href={'log-in'}>Login</Link>
+              </header>
+              <URLContextProvider>
+                <ProjectQueryProvider>
+                    {children}
+                </ProjectQueryProvider>
+              </URLContextProvider>
+            </LoginCheck>
       </body>
     </html>
   );

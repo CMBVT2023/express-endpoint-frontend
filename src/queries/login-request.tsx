@@ -5,7 +5,7 @@ import { URLContext } from "@/utils/url-context-provider";
 import { useContext } from "react";
 import storeUserLogin from "@/api/store-user-login";
 import { redirect } from "next/navigation"; 
-import { ResponseData } from "@/utils/typescript-types";
+import { UserSessionData } from "@/utils/typescript-types";
 
 type UserData = {
     userName: string;
@@ -34,7 +34,7 @@ export default function useLogIn() {
         return response.data;
     }
 
-    async function saveUser(responseData: ResponseData) {
+    async function saveUser(responseData: UserSessionData) {
         // Stored the user's authentication token in cookies
         const isUserTokenStored = await storeUserLogin(responseData);
 

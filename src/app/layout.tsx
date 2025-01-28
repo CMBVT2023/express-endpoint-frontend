@@ -33,11 +33,6 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
             <LoginCheck>
-              <header className="flex gap-4">
-                <Link href={'/'}>Home</Link>
-                <Link href={'add-car'}>Add</Link>
-                <Link href={'log-in'}>Login</Link>
-              </header>
               <URLContextProvider>
                 <ProjectQueryProvider>
                     <div className="h-dvh">

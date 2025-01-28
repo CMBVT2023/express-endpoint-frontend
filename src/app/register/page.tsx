@@ -1,8 +1,10 @@
+import UserRegistration from "./containers/UserRegistration";
+
 export default function Register() {
 
     return (
         <>
-            Test
+            <UserRegistration />
         </>
     )
 }

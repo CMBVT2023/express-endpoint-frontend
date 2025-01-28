@@ -1,13 +1,13 @@
 "use client"
 import { FormEvent, useEffect, useRef } from "react";
 import UserInput from "../components/UserInput";
-import useLogIn from "@/queries/login-request";
 import { redirect } from "next/navigation";
+import useRegistration from "@/queries/registration-request";
 
-export default function UserLogIn() {
+export default function UserRegistration() {
     const userNameRef = useRef<HTMLInputElement | null>(null)
     const userKeyRef = useRef<HTMLInputElement | null>(null)
-    const {error, mutateAsync, isSuccess} = useLogIn();
+    const {error, mutateAsync, isSuccess} = useRegistration();
 
     useEffect(() => {
         if (isSuccess) redirect('/');
@@ -28,7 +28,7 @@ export default function UserLogIn() {
         <form onSubmit={handleSubmit} className="flex flex-col justify-center items-center">
             <UserInput inputType="text" labelName="User Name" inputRef={userNameRef}/>
             <UserInput inputType="password" labelName="Password" inputRef={userKeyRef}/>
-            <input type="submit" value="Login" />
+            <input type="submit" value="Log In" />
         </form>
     )
 }

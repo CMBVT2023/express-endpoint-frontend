@@ -1,23 +1,24 @@
-import useDeleteRequest from "@/queries/delete-request" 
+import useDeleteRequest from "@/queries/delete-request";
 
 interface DeleteButtonProps {
-    id: number
+  id: number;
 }
 
 export default function DeleteButton({ id }: DeleteButtonProps) {
-    const { error, isSuccess, mutateAsync } = useDeleteRequest({endpointString: "car", associatedKeyString: "allCars"})
+  const { error, isSuccess, mutateAsync } = useDeleteRequest({
+    endpointString: "car",
+    associatedKeyString: "allCars",
+  });
 
-    function handleClick() {
-        const userChoice = confirm("Warning this action cannot be undone! Press confirm to continue.")
+  function handleClick() {
+    const userChoice = confirm(
+      "Warning this action cannot be undone! Press confirm to continue."
+    );
 
-        if (!userChoice) return;
+    if (!userChoice) return;
 
-        mutateAsync(id)
-    }
+    mutateAsync(id);
+  }
 
-    return (
-        <button onClick={handleClick}>
-            Delete
-        </button>
-    )
+  return <button onClick={handleClick}>Delete</button>;
 }

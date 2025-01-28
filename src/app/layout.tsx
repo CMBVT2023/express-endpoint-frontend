@@ -2,8 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
-import ProjectQueryProvider from '@/utils/project-query-provider'
-import Link from "next/link";
+import ProjectQueryProvider from "@/utils/project-query-provider";
 import URLContextProvider from "@/utils/url-context-provider";
 import LoginCheck from "@/utils/login-check";
 
@@ -32,15 +31,13 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-            <LoginCheck>
-              <URLContextProvider>
-                <ProjectQueryProvider>
-                    <div className="h-dvh">
-                      {children}
-                    </div>
-                </ProjectQueryProvider>
-              </URLContextProvider>
-            </LoginCheck>
+        <LoginCheck>
+          <URLContextProvider>
+            <ProjectQueryProvider>
+              <div className="h-dvh">{children}</div>
+            </ProjectQueryProvider>
+          </URLContextProvider>
+        </LoginCheck>
       </body>
     </html>
   );

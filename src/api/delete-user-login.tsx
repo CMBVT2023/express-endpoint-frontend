@@ -1,18 +1,18 @@
-"use server"
+"use server";
 import { cookies } from "next/headers";
 
 export default async function deleteUserLogin() {
-    try {
-        const cookieStore = await cookies();
-    
-        cookieStore.delete("user");
+  try {
+    const cookieStore = await cookies();
 
-        // Checks that the user current login was removed and if not an error is thrown.
-        const isUserRemoved = cookieStore.has("user");
-        if (!isUserRemoved) throw new Error("Failed to remove user!")
+    cookieStore.delete("user");
 
-        return true;
-    } catch (error) {
-        console.error(error)
-    }
+    // Checks that the user current login was removed and if not an error is thrown.
+    const isUserRemoved = cookieStore.has("user");
+    if (!isUserRemoved) throw new Error("Failed to remove user!");
+
+    return true;
+  } catch (error) {
+    console.error(error);
+  }
 }

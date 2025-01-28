@@ -1,7 +1,7 @@
 "use client"
 import { FormEvent, useRef } from "react";
 import UserInput from "../components/UserInput";
-import usePostRequest from "@/utils/post-request";
+import usePostRequest from "@/queries/post-request"; 
 
 export default function AddForm() {
     const makeRef = useRef<HTMLInputElement | null>(null)

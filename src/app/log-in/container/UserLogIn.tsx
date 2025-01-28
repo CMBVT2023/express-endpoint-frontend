@@ -1,7 +1,7 @@
 "use client"
 import { FormEvent, useRef } from "react";
 import UserInput from "../components/UserInput";
-import useLogIn from "@/utils/login-request";
+import useLogIn from "@/queries/login-request";
 
 export default function UserLogIn() {
     const userNameRef = useRef<HTMLInputElement | null>(null)
@@ -10,7 +10,6 @@ export default function UserLogIn() {
 
     function handleSubmit(e: FormEvent<HTMLFormElement>) {
         e.preventDefault()
-        console.log("test")
 
         if (userNameRef.current && userKeyRef.current) {
             mutateAsync({

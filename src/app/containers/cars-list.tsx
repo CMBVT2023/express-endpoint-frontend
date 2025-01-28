@@ -1,5 +1,5 @@
 "use client"
-import useGetRequest from "@/utils/get-request"
+import useGetRequest from "@/queries/get-request" 
 import Car from "../components/car"
 import { CarObject } from "@/utils/typescript-types"
 

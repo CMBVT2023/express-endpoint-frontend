@@ -1,5 +1,5 @@
 "use client"
-import usePutRequest from "@/utils/put-request"
+import usePutRequest from "@/queries/put-request"; 
 import type { CarObject } from "@/utils/typescript-types"
 import { FormEvent, useEffect, useState } from "react";
 import UserInput from "../components/UserInput";

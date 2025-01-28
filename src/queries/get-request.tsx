@@ -2,7 +2,7 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useContext } from "react";
-import { URLContext } from "./context-provider";
+import { URLContext } from "@/utils/context-provider";
 
 interface UseGetRequestProps {
     keyString: string;

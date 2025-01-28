@@ -1,4 +1,4 @@
-import useDeleteRequest from "@/utils/delete-request"
+import useDeleteRequest from "@/queries/delete-request" 
 
 interface DeleteButtonProps {
     id: number

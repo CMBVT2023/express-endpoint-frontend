@@ -40,6 +40,7 @@ export default function RootLayout({
           <footer>
             <Link href={'/'}>Home</Link>
             <Link href={'add-car'}>Add</Link>
+            <Link href={'log-in'}>Login</Link>
           </footer>
       </body>
     </html>

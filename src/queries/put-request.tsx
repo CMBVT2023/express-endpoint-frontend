@@ -1,7 +1,7 @@
 "use client"
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { URLContext } from "@/utils/url-context-provider";
 import getUserLogin from "@/api/get-user-login";
 
@@ -47,6 +47,7 @@ export default function usePutRequest({associatedKeyString, endpointString}: Use
     }
 
     function refetchData() {
+        // Triggers a refetch of the main get request.
         clientQuery.invalidateQueries({queryKey: [associatedKeyString]})
     }
 

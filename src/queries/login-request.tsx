@@ -3,9 +3,9 @@ import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { URLContext } from "@/utils/url-context-provider";
 import { useContext } from "react";
-import { UserData } from "@/utils/typescript-types";
 import storeUserLogin from "@/api/store-user-login";
 import { redirect } from "next/navigation"; 
+import { ResponseData } from "@/utils/typescript-types";
 
 type UserData = {
     userName: string;
@@ -35,8 +35,10 @@ export default function useLogIn() {
     }
 
     async function saveUser(responseData: ResponseData) {
+        // Stored the user's authentication token in cookies
         const isUserTokenStored = await storeUserLogin(responseData);
 
+        // If the token is stored successfully the user is returned to the home page.
         if (isUserTokenStored) redirect('/')
     }
 

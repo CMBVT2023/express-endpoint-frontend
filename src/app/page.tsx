@@ -3,8 +3,9 @@ import CarsList from "./containers/cars-list";
 import { redirect } from "next/navigation";
 
 export default async function Home() {
+  // Checks if the user is logged in
   const isUserLoggedIn = await checkUserLogin();
-
+  // Redirects user to login page if no valid login is found
   if (!isUserLoggedIn) redirect('log-in')
 
   return (

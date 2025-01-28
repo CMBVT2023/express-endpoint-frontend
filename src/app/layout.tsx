@@ -31,17 +31,17 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+          <header className="flex gap-4">
+            <Link href={'/'}>Home</Link>
+            <Link href={'add-car'}>Add</Link>
+            <Link href={'log-in'}>Login</Link>
+          </header>
+
           <URLContextProvider>
             <ProjectQueryProvider>
                 {children}
             </ProjectQueryProvider>
           </URLContextProvider>
-
-          <footer>
-            <Link href={'/'}>Home</Link>
-            <Link href={'add-car'}>Add</Link>
-            <Link href={'log-in'}>Login</Link>
-          </footer>
       </body>
     </html>
   );
